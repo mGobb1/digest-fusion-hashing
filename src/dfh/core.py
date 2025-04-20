@@ -2,8 +2,16 @@ from dfh.exceptions import InvalidSplitRatioError
 class DigestFusionHasher:
     """
     Digest Fusion Hasher
-    A secure technique for combining two cryptographic digests with randomized splitting,
-    and creating a final robust digest.
+    
+    A secure hashing system that combines content and signature digests
+    using a randomized split ratio technique for enhanced security.
+
+    Methods:
+        hash(content, signature) -> dict:
+            Generates a fused hash and returns the final hash along with the used split ratio.
+        
+            verify(content, signature, split_ratio, expected_hash) -> bool:
+                Verifies if given content and signature match the expected hash using provided split ratio.
     """
 
     def __init__(self):
@@ -13,14 +21,16 @@ class DigestFusionHasher:
 
     def hash(self, content: bytes, signature: bytes) -> dict:
         """
-        Hash the given content and signature using dual digest fusion with randomized split.
+        Generates a secure hash by fusing the content and signature digests with a randomized split ratio.
 
         Args:
-            content (bytes): The main content to protect
-            signature (bytes): The internal signature or secret
+            content (bytes): The main content to be hashed.
+            signature (bytes): The secret signature used for added randomness.
 
         Returns:
-            dict: A dictionary with the final hash and the split ratio used.
+            dict: A dictionary containing:
+                - 'final_hash' (str): The resulting final hash as a hexadecimal string.
+                - 'split_ratio' (float): The randomly generated split ratio used during fusion.
         """
         
         from hashlib import sha3_512
@@ -46,17 +56,19 @@ class DigestFusionHasher:
 
     def verify (self, content: bytes, signature:bytes, split_ratio: float, expected_hash: str) -> bool:
         """
-        Verify if the given content and signature produce the expected final hash
-        using the provided split ratio
+        Verifies if the provided content and signature match the expected hash using the given split ratio.
         
         Args:
             content (bytes): The main content to verify
-            signature (bytes): The internal signature or secret
-            split_ratio (float): The split ratio that was used originally
-            expected_hash (str): The expected final hash in hexadecimal
+            signature (bytes): The secret signature that was used originally.
+            split_ratio (float): The split ratio that was used during hash generation.
+            expected_hash (str): The expected final hash to match against.
 
+        Raises:
+            InvalidSplitRatioError: If the provided split ratio is outside the allowed range (0.30 - 0.70).
+        
         Returns:
-            bool: True if the generated hash matches the expected hash, False otherwise
+            bool: True if the generated hash matches the expected hash, False otherwise.
         """
 
         if not (0.30 <= split_ratio <= 0.70):
