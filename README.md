@@ -1,124 +1,129 @@
-# Digest Fusion Hashing (DFH)
+# 🚀 Digest Fusion Hashing (DFH)
 
-A next-generation hashing technique that combines cryptographic digests of a content and a secret signature using a randomized split ratio.  
-This increases security and resilience against traditional hash-based attacks.
-
-Secure, lightweight, and built for modern Python projects.
-
----
-
-## 🔍 Why Digest Fusion Hashing is Next-Generation
-
-Digest Fusion Hashing introduces concepts aligned with the next evolution of secure hashing systems:
-
-- **Dynamic Digest Fusion:**  
-  Instead of a direct hashing of the content, DFH combines two independent digests (content and signature) with a randomized structural split before the final hash is calculated.
-  
-- **Randomized Structural Variation:**  
-  The split ratio is randomly generated for every operation, increasing unpredictability and making preimage or collision attacks significantly more complex.
-
-- **Multiple Security Layers:**  
-  Attackers must control both the content and the signature, predict the correct random split ratio, and reconstruct the fused digest accurately before even attempting to match the final hash.
-
-- **Increased Resistance to Targeted Attacks:**  
-  Compared to traditional hashing, DFH imposes multiple independent barriers to potential attackers.
-
-Digest Fusion Hashing is designed not only for today's security needs but also to anticipate the challenges and adversaries of tomorrow.
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Status: Stable](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
+[![Security Policy](https://img.shields.io/badge/security-active-critical.svg)](./SECURITY.md)
 
 ---
 
-## 🚀 Features
+## 📚 Quick Overview
 
-- Secure digest fusion with randomized split ratio
-- Verifiable content integrity
-- Easy to use API
-- Clean and professional codebase
-- 100% unit test coverage
-- Ready for production
-
----
-
-## 🛠 Technologies Used
-
-- Python 3.10+
-- `pytest` for testing
+- 🔐 Next-generation hashing technique
+- 🎲 Randomized digest fusion
+- 🛡️ Strong internal signature protection
+- ⚡ Lightweight and blazing fast
+- 🧬 Modular and extensible design
+- 🛠️ Professional-level documentation and security practices
 
 ---
 
-## ⚙️ Installation
+## 🧐 What is Digest Fusion Hashing?
 
-You can install it locally:
+Digest Fusion Hashing (DFH) is an innovative technique for creating ultra-secure hash digests by fusing the content digest with a randomized split of an internal secret signature.
+
+This provides an **extremely high level of protection**, ensuring that even if attackers have access to the public hash, they cannot reconstruct the original content or secret without the original signature and split ratio.
+
+---
+
+## 📜 Features
+
+- Combine two independent digests into a single final digest
+- Randomized splitting ratio for maximum unpredictability
+- Based on SHA3-512 cryptographic hashing
+- Extremely lightweight: no external dependencies
+- Designed for both integrity verification and authenticity validation
+- Security-first architecture following Big Tech practices
+
+---
+
+## 🛠️ Installation
 
 ```bash
-git clone https://github.com/your-username/digest-fusion-hashing.git
+pip install digest-fusion-hashing
+```
+
+*(When released on PyPI)*
+
+For now, clone manually:
+
+```bash
+git clone https://github.com/mGobb1/digest-fusion-hashing.git
 cd digest-fusion-hashing
-pip install -r requirements.txt
 ```
 
 ---
 
-## 🧐 How It Works
-
-- `DigestFusionHasher.hash(content, signature)`:
-  - Generates a fused cryptographic hash.
-  - Returns the final hash and the random split ratio used.
-- `DigestFusionHasher.verify(content, signature, split_ratio, expected_hash)`:
-  - Verifies whether given content and signature reproduce the expected hash.
-  - Raises an error if the split ratio is invalid.
-
----
-
-## 🧹 Example Usage
+## 🚀 Usage Example
 
 ```python
 from dfh.core import DigestFusionHasher
 
-# Initialize
+# Example data
+content = b"your-data"
+signature = b"your-secret-signature"
+
+# Hashing
 hasher = DigestFusionHasher()
-
-# Content and secret signature
-content = b"My important data"
-signature = b"My top secret signature"
-
-# Generate hash
 result = hasher.hash(content, signature)
-print("Final Hash:", result["final_hash"])
-print("Split Ratio Used:", result["split_ratio"])
 
-# Verify hash
-is_valid = hasher.verify(content, signature, result["split_ratio"], result["final_hash"])
-print("Verification:", "Success" if is_valid else "Failed")
+print("Final Hash:", result["final_hash"])
+print("Split Ratio:", result["split_ratio"])
 ```
 
 ---
 
-## 💂 Project Structure
+## 📂 Project Structure
 
 ```plaintext
 src/
-└── dfh/
-    ├── core.py              # Core hashing logic
-    ├── exceptions.py        # Custom exceptions
-    └── __init__.py           # Package initialization
+  └── dfh/
+      ├── core.py          # DigestFusionHasher logic
+      ├── exceptions.py    # Custom exception classes
 tests/
-└── test_core.py              # Unit tests
-pytest.ini                    # Test runner configuration
-requirements.txt              # Project dependencies
-README.md                     # Project documentation
-LICENSE                       # MIT License
+  └── test_core.py         # Unit tests for DFH
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+LICENSE
 ```
 
 ---
 
-## 📜 License
+## 📁 Table of Contents
 
-This project is licensed under the MIT License.  
-See the [LICENSE](LICENSE) file for details.
+- [Quick Overview](#-quick-overview)
+- [What is Digest Fusion Hashing?](#-what-is-digest-fusion-hashing)
+- [Features](#-features)
+- [Installation](#-installation)
+- [Usage Example](#-usage-example)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [Security Policy](#-security-policy)
+- [License](#-license)
 
 ---
 
-## ✨ Author
+## 🤝 Contributing
 
-Developed with care by **Miguel Gobbi**
+We welcome contributions!  
+Please check out the [Contributing Guidelines](./CONTRIBUTING.md) for more details.
 
 ---
+
+## 🔐 Security Policy
+
+For information on reporting vulnerabilities, please read our [Security Policy](./SECURITY.md).
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+## ✨ Final Note
+
+Digest Fusion Hashing was built with care and dedication, following the highest security and software engineering standards.
