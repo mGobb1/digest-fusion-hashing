@@ -1,3 +1,4 @@
+from dfh.exceptions import InvalidSplitRatioError
 class DigestFusionHasher:
     """
     Digest Fusion Hasher
@@ -57,6 +58,10 @@ class DigestFusionHasher:
         Returns:
             bool: True if the generated hash matches the expected hash, False otherwise
         """
+
+        if not (0.30 <= split_ratio <= 0.70):
+            
+            raise InvalidSplitRatioError(f'')
 
         from hashlib import sha3_512
 
