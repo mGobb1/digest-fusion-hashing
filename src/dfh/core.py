@@ -21,4 +21,23 @@ class DigestFusionHasher:
         Returns:
             dict: A dictionary with the final hash and the split ratio used.
         """
-        pass
+        
+        from hashlib import sha3_512
+        from random import uniform as random_uniform
+
+        content_digest = sha3_512(content).digest()
+        signature_digest = sha3_512(signature).digest()
+        
+        split_ratio = random_uniform(0.30, 0.70)
+
+        content_split_point = int(len(content_digest) * split_ratio)
+        signature_split_point = len(signature_digest) - content_split_point
+
+        fused_digest = content_digest[:content_split_point] + signature_digest[signature_split_point:]
+
+        final_digest = sha3_512(fused_digest).hexdigest()
+
+        return {
+            'final_hash': final_digest,
+            'split_ratio': split_ratio
+        }
