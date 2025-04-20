@@ -71,7 +71,7 @@ class DigestFusionHasher:
         content_split_point = int(len(content_digest) * split_ratio)
         signature_split_point = len(signature_digest) - content_split_point
 
-        fused_digest = content_digest[:content_split_point] + signature_digest[signature_split_point]
+        fused_digest = content_digest[:content_split_point] + signature_digest[signature_split_point:]
 
         final_digest = sha3_512(fused_digest).hexdigest()
 
