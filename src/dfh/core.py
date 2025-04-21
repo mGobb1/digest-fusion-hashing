@@ -73,7 +73,7 @@ class DigestFusionHasher:
 
         if not (0.30 <= split_ratio <= 0.70):
             
-            raise InvalidSplitRatioError(f'')
+            raise InvalidSplitRatioError(f'Split-Ratio needs to be between 0.30 and 0.70')
 
         from hashlib import sha3_512
 
