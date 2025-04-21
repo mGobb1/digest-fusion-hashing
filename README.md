@@ -43,15 +43,6 @@ This provides an **extremely high level of protection**, ensuring that even if a
 pip install digest-fusion-hashing
 ```
 
-*(When released on PyPI)*
-
-For now, clone manually:
-
-```bash
-git clone https://github.com/mGobb1/digest-fusion-hashing.git
-cd digest-fusion-hashing
-```
-
 ---
 
 ## 🚀 Usage Example
